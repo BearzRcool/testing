@@ -96,8 +96,12 @@ while True:
     finally:
         print ("abcdefghijklmnopqrstuvwxyz")
 """
-# lambda functions- super small and has no namy (anonymous)
 
+"""
+# lambda functions- super small and has no name (anonymous)
+
+# function that don't take up a lot of space
+# used for testing, quick calculations, or when you need a function for a short time
 # can take in any number of parameters and arguments
 # but can only have one expression / line of code
 number1 = lambda a : a + 10
@@ -111,9 +115,44 @@ print(add_numbers(10, 10))
 print(add(10,10))
 
 # why use lambda functions?
+# -can used as function in a function
+# uses less memory
 
 def myfunc(n):
     return lambda a: a + n
 num = myfunc(5)
 
 print(num(10))
+"""
+# lambda practice
+#Problem: Sorting Employees by certain criteria
+
+#You're given a list of dictionaries, where each dictionary represents an employee with their name, age, and salary.
+
+#Write a lambda function called sort_employees that takes this list, and a string key, which can either be age or salaary. #
+#The function needs to return a list of employees based on ascending order
+
+employees = [
+    {"name":"Alice", "age":23, "salary": 83000},
+    {"name":"John", "age":33, "salary": 80400},
+    {"name":"Bob", "age":26, "salary": 100000},
+    {"name":"Janise", "age":16, "salary": 82000},
+    {"name":"Lumberg", "age":28, "salary": 80010},
+    {"name":"Ron", "age":40, "salary": 83400},
+]
+def sort_employees(employees, key):
+        for i in range(len(employees)):
+            for j in range(i+1, len(employees)):
+                if employees[i][key] > employees[j][key]:
+                     temp = employees[i]
+                     employees[i] = employees[j]
+                     employees[j] = temp
+        return employees
+
+#print(sort_employees(employees, "age"))
+
+def lambda_sort_employees(employees, key):
+    employees.sort(key= lambda x : x[key])
+    return employees
+sorted_values = lambda_sort_employees(employees,"age")
+print (sorted_values)
