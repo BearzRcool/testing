@@ -176,7 +176,7 @@ sorted_values = input("Sort the employees based on their age or salary? ")
 sorted_values = lambda_sort_employees(employees,str(sorted_values))
 print (sorted_values)
 '''
-#inventory problem
+# inventory problem
 # create an inventory that you can show where you can remove items, add items
 inventory = ["sword", "shield"]
 def AddInv(item):
@@ -187,18 +187,27 @@ def RemoveInv(item):
     except:
         print("You don't have that item")
 def CheckInv():
-    printout = ''
+    printout = ' | '
     for i in range(len(inventory)):
-        printout += str(inventory[i]) + ", "
+        printout += str(inventory[i]) + " | "
     print (printout)
 while True:
+    break
     item = input("Whwat do you want to do with your inventory? (add, remove, check) ")
     if str(item.lower()) == "add":
         item = input("What do you want to add? ")
+        os.system('cls')
         AddInv(item)
     elif str(item.lower()) =="remove":
         item = input("What do you want to remove? ")
+        os.system('cls')
         RemoveInv(item)
     elif str(item.lower()) == "check":
+        os.system('cls')
         print("this is your inventory")
         CheckInv()
+#slots game?
+#text based, will show up in the terminal
+score = 0
+slots = "| 0 | 0 | 0 | 0 | 0 |\n| 0 | 0 | 0 | 0 | 0 |\n| 0 | 0 | 0 | 0 | 0 |"
+print (slots)
