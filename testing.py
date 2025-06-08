@@ -56,7 +56,7 @@ while True:
         print("---------------------------------------------------------------")
 
 '''
-"""
+
 # Safe Division Calculator
 # You are tasked with writing a program that asks the user to enter two numbers and divide the first number by the second.
 # Hoewever, users might make mistakes, like entering non-number values, or try dividing by zero.
@@ -68,6 +68,7 @@ while True:
 # 4. If the user enters a divide by zero issue, "Error: can't divide by zero"
 # 5. Print result if the divison is safe
 # 6. Always print "Operator Completed" at the end, NO MATTER what happens.
+"""
 try:
     os.system('cls')
     top = int(input("Enter a number be divided: "))
@@ -139,22 +140,36 @@ employees = [
     {"name":"Janise", "age":16, "salary": 82000},
     {"name":"Lumberg", "age":28, "salary": 80010},
     {"name":"Ron", "age":40, "salary": 83400},
+    {"name":"Patrick", "age":36, "salary": 83400},
+    {"name":"Tim", "age":31, "salary": 83400},
+    {"name":"Anthony", "age":46, "salary": 83400},
 ]
 def sort_employees(employees, key):
+        keylist = []
+        namelist =[]
         for i in range(len(employees)):
             for j in range(i+1, len(employees)):
                 if employees[i][key] > employees[j][key]:
                      temp = employees[i]
                      employees[i] = employees[j]
                      employees[j] = temp
-        return employees
+        answer = ""
+        for i in range(len(employees)):
+            keylist.append(employees[i][key])
+            namelist.append(employees[i]["name"])
+            answer += str(namelist[i]) + ' : ' + str(keylist[i]) + ', '
+        return answer
+        
+             
+
+
 
 #print(sort_employees(employees, "age"))
 
 def lambda_sort_employees(employees, key):
     employees.sort(key= lambda x : x[key])
     return employees
-
+os.system('cls')
 sorted_values = input("Sort the employees based on their age or salary? ")
-
-print (lambda_sort_employees(employees,str(sorted_values)))
+sorted_values = sort_employees(employees,str(sorted_values))
+print (sorted_values)
