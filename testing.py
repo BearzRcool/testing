@@ -167,9 +167,16 @@ def sort_employees(employees, key):
 #print(sort_employees(employees, "age"))
 
 def lambda_sort_employees(employees, key):
+    keylist = []
+    namelist =[]
+    answer = ""
     employees.sort(key= lambda x : x[key])
-    return employees
+    for i in range(len(employees)):
+        keylist.append(employees[i][key])
+        namelist.append(employees[i]["name"])
+        answer += str(namelist[i]) + ' : ' + str(keylist[i]) + ', '
+    return answer
 os.system('cls')
 sorted_values = input("Sort the employees based on their age or salary? ")
-sorted_values = sort_employees(employees,str(sorted_values))
+sorted_values = lambda_sort_employees(employees,str(sorted_values))
 print (sorted_values)
