@@ -132,7 +132,7 @@ print(num(10))
 
 #Write a lambda function called sort_employees that takes this list, and a string key, which can either be age or salaary. #
 #The function needs to return a list of employees based on ascending order
-
+'''
 employees = [
     {"name":"Alice", "age":23, "salary": 83000},
     {"name":"John", "age":33, "salary": 80400},
@@ -159,12 +159,6 @@ def sort_employees(employees, key):
             namelist.append(employees[i]["name"])
             answer += str(namelist[i]) + ' : ' + str(keylist[i]) + ', '
         return answer
-        
-             
-
-
-
-#print(sort_employees(employees, "age"))
 
 def lambda_sort_employees(employees, key):
     keylist = []
@@ -176,7 +170,35 @@ def lambda_sort_employees(employees, key):
         namelist.append(employees[i]["name"])
         answer += str(namelist[i]) + ' : ' + str(keylist[i]) + ', '
     return answer
+
 os.system('cls')
 sorted_values = input("Sort the employees based on their age or salary? ")
 sorted_values = lambda_sort_employees(employees,str(sorted_values))
 print (sorted_values)
+'''
+#inventory problem
+# create an inventory that you can show where you can remove items, add items
+inventory = ["sword", "shield"]
+def AddInv(item):
+    inventory.append(str(item))
+def RemoveInv(item):
+    try:
+        inventory.remove(str(item))
+    except:
+        print("You don't have that item")
+def CheckInv():
+    printout = ''
+    for i in range(len(inventory)):
+        printout += str(inventory[i]) + ", "
+    print (printout)
+while True:
+    item = input("Whwat do you want to do with your inventory? (add, remove, check) ")
+    if str(item.lower()) == "add":
+        item = input("What do you want to add? ")
+        AddInv(item)
+    elif str(item.lower()) =="remove":
+        item = input("What do you want to remove? ")
+        RemoveInv(item)
+    elif str(item.lower()) == "check":
+        print("this is your inventory")
+        CheckInv()
