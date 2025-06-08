@@ -154,5 +154,7 @@ def sort_employees(employees, key):
 def lambda_sort_employees(employees, key):
     employees.sort(key= lambda x : x[key])
     return employees
-sorted_values = lambda_sort_employees(employees,"age")
-print (sorted_values)
+
+sorted_values = input("Sort the employees based on their age or salary? ")
+
+print (lambda_sort_employees(employees,str(sorted_values)))
