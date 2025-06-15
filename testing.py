@@ -210,6 +210,7 @@ while True:
 '''
 #slots game?
 #text based, will show up in the terminal
+#figure out how to check if you win
 images = [1,2,3,4,5,6,7,8,9]
 def RollSlots():
     for i in range(len(images)):
