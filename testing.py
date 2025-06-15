@@ -1,5 +1,6 @@
 import os
 import time
+import random
 # excption == error
 
 #exception handling == error handling
@@ -178,6 +179,7 @@ print (sorted_values)
 '''
 # inventory problem
 # create an inventory that you can show where you can remove items, add items
+'''
 inventory = ["sword", "shield"]
 def AddInv(item):
     inventory.append(str(item))
@@ -192,7 +194,6 @@ def CheckInv():
         printout += str(inventory[i]) + " | "
     print (printout)
 while True:
-    break
     item = input("Whwat do you want to do with your inventory? (add, remove, check) ")
     if str(item.lower()) == "add":
         item = input("What do you want to add? ")
@@ -206,8 +207,27 @@ while True:
         os.system('cls')
         print("this is your inventory")
         CheckInv()
+'''
 #slots game?
 #text based, will show up in the terminal
-score = 0
-slots = "| 0 | 0 | 0 | 0 | 0 |\n| 0 | 0 | 0 | 0 | 0 |\n| 0 | 0 | 0 | 0 | 0 |"
-print (slots)
+images = [1,2,3,4,5,6,7,8,9]
+def RollSlots():
+    for i in range(len(images)):
+        images[i] = random.randint(1,5)
+def Winnings():
+    earnings = 0
+    Win = ["a","b","c"], ["d","e","f"], ["g","h","i"], ["a","d","g"], ["b","e","h"], ["c","f","i"],
+    ["a","e","i"], ["c","e","g"],
+    ['a','b','c','d','e','f','g','h','i']
+    for i in range(0,9):
+        pass
+money = 100
+while True:
+    mainUI = "| " + str(images[0]) + " | " + str(images[1]) + " | " + str(images[2]) +  " |\n| " + str(images[3]) + " | " + str(images[4]) + " | " + str(images[5]) + " |\n| " + str(images[6]) + " | " + str(images[7]) + " | " + str(images[8]) + " |"
+    RollSlots()
+    print(mainUI)
+    question = input("What do you want to do? You have "+ str(money) + "$. ")
+    money -= 10
+    Winnings()
+
+    
