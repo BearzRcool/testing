@@ -211,24 +211,56 @@ while True:
 #slots game?
 #text based, will show up in the terminal
 #figure out how to check if you win
-images = [1,2,3,4,5,6,7,8,9]
+
+images = ["a","b","c","d","e","f","g","h","i"]
+
+
+money = 100
+
+def MainUI():
+    mainUI = "| " + str(images[0]) + " | " + str(images[1]) + " | " + str(images[2]) +  " |\n| " + str(images[3]) + " | " + str(images[4]) + " | " + str(images[5]) + " |\n| " + str(images[6]) + " | " + str(images[7]) + " | " + str(images[8]) + " |"
+    print (mainUI)
 def RollSlots():
+    
     for i in range(len(images)):
-        images[i] = random.randint(1,5)
+        test = random.randint(1,5)
+        #🍒|🍋|🍌|🍊|🍎|🍉|🍇|🍀|⛔|💎     
+        # MAKE SYMBOLS WORK INSTEAD OF LETTERS
+        if test == 1:
+            images[i] = "🍒"
+        elif test == 2:
+            images[i] = "🍋"
+        elif test == 3:
+            images[i] = "🍉"
+        elif test == 4:
+            images[i] = "🍀"
+        elif test == 5:
+            images[i] = "💎"
+
 def Winnings():
     earnings = 0
-    Win = ["a","b","c"], ["d","e","f"], ["g","h","i"], ["a","d","g"], ["b","e","h"], ["c","f","i"],
-    ["a","e","i"], ["c","e","g"],
-    ['a','b','c','d','e','f','g','h','i']
-    for i in range(0,9):
-        pass
-money = 100
+        #  A B C    D E F    G H I 
+    Win = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8],
+    [0,4,8], [2,4,7]]
+    for win in Win:
+        a, b, c = win
+        if images[a] == images[b] == images[c]:
+            print(a,b,c)
+            earnings += 100
+    print("You won " + str(earnings) + '$!!!')
+    return earnings
+
+        
 while True:
-    mainUI = "| " + str(images[0]) + " | " + str(images[1]) + " | " + str(images[2]) +  " |\n| " + str(images[3]) + " | " + str(images[4]) + " | " + str(images[5]) + " |\n| " + str(images[6]) + " | " + str(images[7]) + " | " + str(images[8]) + " |"
-    RollSlots()
-    print(mainUI)
-    question = input("What do you want to do? You have "+ str(money) + "$. ")
-    money -= 10
-    Winnings()
+   
+    question = input("Gamble? Costs 10$ You have " + str(money) + '$ ' )
+    os.system('cls')
+    MainUI()
+    if question == '':
+        
+        money -= 10
+        RollSlots()
+        money += Winnings()
+        
 
     
