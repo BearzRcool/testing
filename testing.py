@@ -225,7 +225,7 @@ def RollSlots():
     for i in range(len(images)):
         test = random.randint(1,5)
         #🍒|🍋|🍌|🍊|🍎|🍉|🍇|🍀|⛔|💎     
-        # MAKE SYMBOLS WORK INSTEAD OF LETTERS
+        # ADD MORE SYMOBLS AND STUFF
         if test == 1:
             images[i] = "🍒"
         elif test == 2:
