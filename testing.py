@@ -212,7 +212,7 @@ while True:
 #text based, will show up in the terminal
 #figure out how to check if you win
 
-images = ["a","b","c","d","e","f","g","h","i"]
+images = ["💎","💎","💎","💎","💎","💎","💎","💎","💎"]
 
 
 money = 100
@@ -221,32 +221,53 @@ def MainUI():
     mainUI = "| " + str(images[0]) + " | " + str(images[1]) + " | " + str(images[2]) +  " |\n| " + str(images[3]) + " | " + str(images[4]) + " | " + str(images[5]) + " |\n| " + str(images[6]) + " | " + str(images[7]) + " | " + str(images[8]) + " |"
     print (mainUI)
 def RollSlots():
+    global earnings
+    earnings = 0
+    Jackpot = random.randint(1,5)
+    print (Jackpot)
+    if Jackpot != 1 or Jackpot != 2 or Jackpot != 3:
+        for i in range(len(images)):
+            test = random.randint(1,20)
+            #🍒|🍋|🍌|🍊|🍎|🍉|🍇|🍀|⛔|💎|💸     
+            # ADD MORE SYMOBLS AND STUFF
+            if test == 1 or test == 2 or test == 3 or test == 4 or test == 5:
+                images[i] = "🍒"
+            elif test == 6 or test == 7 or test == 8 or test == 9 or test == 10:
+                images[i] = "🍋"
+            elif test == 11 or test == 12 or test == 13 or test == 14 or test == 15:
+                images[i] = "🍉"
+            elif test == 16 or test == 17 or test == 18:
+                images[i] = "🍀"
+            elif test == 19 or test == 20:
+                images[i] = "💎"
+    else:
+        if Jackpot == 1:
+            for i in range(len(images)):
+                images[i] = '💎'
+        elif Jackpot == 2 or Jackpot == 3:
+            for i in range(len(images)):
+                images[i] = '🍀'
     
-    for i in range(len(images)):
-        test = random.randint(1,5)
-        #🍒|🍋|🍌|🍊|🍎|🍉|🍇|🍀|⛔|💎     
-        # ADD MORE SYMOBLS AND STUFF
-        if test == 1:
-            images[i] = "🍒"
-        elif test == 2:
-            images[i] = "🍋"
-        elif test == 3:
-            images[i] = "🍉"
-        elif test == 4:
-            images[i] = "🍀"
-        elif test == 5:
-            images[i] = "💎"
 
 def Winnings():
     earnings = 0
         #  A B C    D E F    G H I 
     Win = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8],
-    [0,4,8], [2,4,7]]
+    [0,4,8], [2,4,6]]
     for win in Win:
         a, b, c = win
         if images[a] == images[b] == images[c]:
-            print(a,b,c)
-            earnings += 100
+            if images[a] == "🍒":
+                earnings += 30
+            elif images[a] == "🍋":
+                earnings += 30
+            elif images[a] == "🍉":
+                earnings += 30
+            elif images[a] == "🍀":
+                earnings += 70
+            elif images[a] == "💎":
+                earnings += 150
+
     print("You won " + str(earnings) + '$!!!')
     return earnings
 
@@ -255,11 +276,12 @@ while True:
    
     question = input("Gamble? Costs 10$ You have " + str(money) + '$ ' )
     os.system('cls')
-    MainUI()
+    
     if question == '':
         
         money -= 10
         RollSlots()
+        MainUI()
         money += Winnings()
         
 
