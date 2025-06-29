@@ -223,30 +223,46 @@ def MainUI():
 def RollSlots():
     global earnings
     earnings = 0
-    Jackpot = random.randint(1,5)
+    Jackpot = random.randint(1,100)
     print (Jackpot)
-    if Jackpot != 1 or Jackpot != 2 or Jackpot != 3:
-        for i in range(len(images)):
-            test = random.randint(1,20)
-            #🍒|🍋|🍌|🍊|🍎|🍉|🍇|🍀|⛔|💎|💸     
-            # ADD MORE SYMOBLS AND STUFF
-            if test == 1 or test == 2 or test == 3 or test == 4 or test == 5:
-                images[i] = "🍒"
-            elif test == 6 or test == 7 or test == 8 or test == 9 or test == 10:
-                images[i] = "🍋"
-            elif test == 11 or test == 12 or test == 13 or test == 14 or test == 15:
-                images[i] = "🍉"
-            elif test == 16 or test == 17 or test == 18:
-                images[i] = "🍀"
-            elif test == 19 or test == 20:
-                images[i] = "💎"
-    else:
-        if Jackpot == 1:
+    if Jackpot == 1:
             for i in range(len(images)):
                 images[i] = '💎'
-        elif Jackpot == 2 or Jackpot == 3:
+            print("GIANT JACKPOT!!")
+    elif Jackpot == 2 or Jackpot == 3:
             for i in range(len(images)):
                 images[i] = '🍀'
+            print ("JACKPOT!!!")
+        
+    else:
+        for i in range(len(images)):
+            test = random.randint(1,102)
+            #🍒|🍋|🍌|🍊|🍎|🍉|🍇|🍀|⛔|💎|💸|🎲|🥝|🍍|🍺|🍫|
+            # MAKE THE THINGS MORE FAIR
+            if test == 101 or test == 102 or test == 1 or test == 2 or test == 3 or test == 4 or test == 5 or test == 6 or test == 7:
+                images[i] = "🍒"
+            elif test == 8 or test == 9 or test == 10 or test == 11 or test == 12 or test == 14 or test == 15 or test == 16 or test == 17:
+                images[i] = "🍋"
+            elif test == 18 or test == 19 or test == 20 or test == 21 or test == 22 or test == 23 or test == 24 or test == 25 or test == 26:
+                images[i] = "🍉"
+            elif test == 27 or test == 28 or test == 29 or test == 30 or test == 31 or test == 32 or test == 33 or test == 34 or test == 35:
+                images[i] = "🍊"
+            elif test == 36 or test == 37 or test == 38 or test == 39 or test == 40 or test == 41 or test == 42 or test == 43 or test == 44:
+                images[i] = "🍇"
+            elif test == 45 or test == 46 or test == 47 or test == 48 or test == 49 or test == 50 or test == 51 or test == 52 or test == 53 or test == 54 or test == 55:
+                images[i] = "🥝"
+            elif test == 56 or test == 57 or test == 58 or test == 59 or test == 60 or test == 61 or test == 62 or test == 63 or test == 64 or test == 65 or test == 66 :
+                images[i] = "🍍"
+            elif test == 67 or test == 68 or test == 69 or test == 70 or test == 71 or test == 72 or test == 73 or test == 74 or test == 75:
+                images[i] = "🎲"
+            elif test == 76 or test == 78 or test == 79 or test == 80 or test == 81 or test == 82 or test == 83 or test == 84:
+                images[i] = "🍺"
+            elif test == 85 or test == 86 or test == 87 or test == 88 or test == 89 or test == 90 or test == 91 or test == 92:
+                images[i] = "🍫"
+            elif test == 93 or test == 94 or test == 95 or test == 96 or test == 97:
+                images[i] = "🍀"
+            elif test == 98 or test == 99 or test == 100:
+                images[i] = "💎"
     
 
 def Winnings():
@@ -256,6 +272,8 @@ def Winnings():
     [0,4,8], [2,4,6]]
     for win in Win:
         a, b, c = win
+        #🍒|🍋|🍌|🍊|🍎|🍉|🍇|🍀|⛔|💎|💸|🎲|🥝|🍍|🍺|🍫|
+        #ADD THE REST OF THE SYMBOLS EQUAL MONEY
         if images[a] == images[b] == images[c]:
             if images[a] == "🍒":
                 earnings += 30
