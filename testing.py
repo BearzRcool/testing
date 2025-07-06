@@ -211,96 +211,178 @@ while True:
 #slots game?
 #text based, will show up in the terminal
 #figure out how to check if you win
+import os
+import time
+import random
 
-images = ["💎","💎","💎","💎","💎","💎","💎","💎","💎"]
+
+
+slotmachine1 = '''
+
++--------------------+
+| W   W IIIII N    N |
+| W   W   I   NN   N |
+| W   W   I   N N  N |  
+| W W W   I   N   NN |
+|  W W  IIIII N    N |
++------+------+------+
+|{:^5}|{:^5}|{:^5}|
++------+------+------+
+|{:^5}|{:^5}|{:^5}|
++------+------+------+
+|{:^5}|{:^5}|{:^5}|
++------+------+------+
+'''
+
+slotmachine2 = '''
+
++--------------------+
+|                    |
+|                    |
+|                    |
+|                    |
+|                    |
++------+------+------+
+|{:^5}|{:^5}|{:^5}|
++------+------+------+
+|{:^5}|{:^5}|{:^5}|
++------+------+------+
+|{:^5}|{:^5}|{:^5}|
++------+------+------+
+'''
+
+slotmachine3 ='''
+
++--------------------+
+| L    OOOOOO  SSSSS |
+| L    O    O  S     |
+| L    O    O  SSSSS |
+| L    O    O      S |
+| LLLL OOOOOO  SSSSS |
++------+------+------+
+|{:^5}|{:^5}|{:^5}|
++------+------+------+
+|{:^5}|{:^5}|{:^5}|
++------+------+------+
+|{:^5}|{:^5}|{:^5}|
++------+------+------+
+'''
+
+
+
+images = ["🍒", "🍋", "🍫", "💎", "🔔", "🍀", "🍋", "🔔", "🍒"]
+cost = 10
+
+#🍒 🍋 🍫 💎 🔔 🍀
+
+choice = 1
+def PrintBoard(choice):
+  time.sleep(0.1)
+  os.system('cls')
+  if choice == 1:
+    print (slotmachine1.format(*images))
+  elif choice == 2:
+    print (slotmachine2.format(*images))
+  elif choice == 3:
+    print (slotmachine3.format(*images))
+  
+def Roll(
+):  #ROLL WORKS, USE SLEEP FUNCTION FROM TIME AND THEN PRINT THE ROLL OUT; ALSO DONT NEED MAINUI IF DOING IT LIKE THIS
+  Jackpot = random.randint(1,25)
+  global choice
+  for a in range(1, 11):
+  
+    for i in range(len(images)):
+      test = random.randint(1, 7)
+      if test == 1 or test == 6 or test == 7:
+        test = "🍒"
+      elif test == 2:
+        test = "🍋"
+      elif test == 3:
+        test = '🍀'
+      elif test == 4:
+        test = "💎"
+      elif test == 5:
+        test = '🔔'
+      
+      images[i] = str(test)
+    PrintBoard(choice)
+    if choice == 1:
+      choice = 2
+    else:
+      choice = 1
+
+  if Jackpot == 1:
+    test = random.randint(1,3)
+    for i in range(len(images)):
+      if test == 1:
+        images[i] = "💎"
+      elif test == 2:
+         images[i] = '🔔'
+      elif test == 3:
+        images[i] = '🍀'
+  
+
+   
 
 
 money = 100
-
-def MainUI():
-    mainUI = "| " + str(images[0]) + " | " + str(images[1]) + " | " + str(images[2]) +  " |\n| " + str(images[3]) + " | " + str(images[4]) + " | " + str(images[5]) + " |\n| " + str(images[6]) + " | " + str(images[7]) + " | " + str(images[8]) + " |"
-    print (mainUI)
-def RollSlots():
-    global earnings
-    earnings = 0
-    Jackpot = random.randint(1,100)
-    print (Jackpot)
-    if Jackpot == 1:
-            for i in range(len(images)):
-                images[i] = '💎'
-            print("GIANT JACKPOT!!")
-    elif Jackpot == 2 or Jackpot == 3:
-            for i in range(len(images)):
-                images[i] = '🍀'
-            print ("JACKPOT!!!")
-        
-    else:
-        for i in range(len(images)):
-            test = random.randint(1,102)
-            #🍒|🍋|🍌|🍊|🍎|🍉|🍇|🍀|⛔|💎|💸|🎲|🥝|🍍|🍺|🍫|
-            # MAKE THE THINGS MORE FAIR
-            if test == 101 or test == 102 or test == 1 or test == 2 or test == 3 or test == 4 or test == 5 or test == 6 or test == 7:
-                images[i] = "🍒"
-            elif test == 8 or test == 9 or test == 10 or test == 11 or test == 12 or test == 14 or test == 15 or test == 16 or test == 17:
-                images[i] = "🍋"
-            elif test == 18 or test == 19 or test == 20 or test == 21 or test == 22 or test == 23 or test == 24 or test == 25 or test == 26:
-                images[i] = "🍉"
-            elif test == 27 or test == 28 or test == 29 or test == 30 or test == 31 or test == 32 or test == 33 or test == 34 or test == 35:
-                images[i] = "🍊"
-            elif test == 36 or test == 37 or test == 38 or test == 39 or test == 40 or test == 41 or test == 42 or test == 43 or test == 44:
-                images[i] = "🍇"
-            elif test == 45 or test == 46 or test == 47 or test == 48 or test == 49 or test == 50 or test == 51 or test == 52 or test == 53 or test == 54 or test == 55:
-                images[i] = "🥝"
-            elif test == 56 or test == 57 or test == 58 or test == 59 or test == 60 or test == 61 or test == 62 or test == 63 or test == 64 or test == 65 or test == 66 :
-                images[i] = "🍍"
-            elif test == 67 or test == 68 or test == 69 or test == 70 or test == 71 or test == 72 or test == 73 or test == 74 or test == 75:
-                images[i] = "🎲"
-            elif test == 76 or test == 78 or test == 79 or test == 80 or test == 81 or test == 82 or test == 83 or test == 84:
-                images[i] = "🍺"
-            elif test == 85 or test == 86 or test == 87 or test == 88 or test == 89 or test == 90 or test == 91 or test == 92:
-                images[i] = "🍫"
-            elif test == 93 or test == 94 or test == 95 or test == 96 or test == 97:
-                images[i] = "🍀"
-            elif test == 98 or test == 99 or test == 100:
-                images[i] = "💎"
-    
-
 def Winnings():
-    earnings = 0
-        #  A B C    D E F    G H I 
-    Win = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8],
-    [0,4,8], [2,4,6]]
-    for win in Win:
-        a, b, c = win
-        #🍒|🍋|🍌|🍊|🍎|🍉|🍇|🍀|⛔|💎|💸|🎲|🥝|🍍|🍺|🍫|
-        #ADD THE REST OF THE SYMBOLS EQUAL MONEY
-        if images[a] == images[b] == images[c]:
-            if images[a] == "🍒":
-                earnings += 30
-            elif images[a] == "🍋":
-                earnings += 30
-            elif images[a] == "🍉":
-                earnings += 30
-            elif images[a] == "🍀":
-                earnings += 70
-            elif images[a] == "💎":
-                earnings += 150
+  PrintBoard(1)
+  global money, choice
+  earnings = 0
+  winning_stuff = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7],
+                   [2, 5, 8], [0, 4, 8], [2, 4, 6]]
+  for combo in winning_stuff:
+    a, b, c = combo
+    if images[a] == images[b] == images[c]:
+      win = cost*2
+      earnings += win
 
-    print("You won " + str(earnings) + '$!!!')
-    return earnings
+  money += earnings
+  if earnings == 0:
+    PrintBoard(3)
+  elif earnings == 240:
+    for i in range(1,5):
+        time.sleep(0.1)
+        PrintBoard(choice)
+        if choice == 1:
+            choice = 2
+        else:
+            choice = 1
+    PrintBoard(1)
 
-        
-while True:
-   
-    question = input("Gamble? Costs 10$ You have " + str(money) + '$ ' )
-    os.system('cls')
+
+test = True
+while test:
+    a = input("Gamble??? It costs $" + str(cost) + ". "  "You have $" + str(money) + ". ")
+    if "yes" in a:
+        os.system('cls')
+        Roll()
+        money -= cost
+        Winnings()
+    elif "ante up" in a:
+        cost += 10
     
-    if question == '':
-        
-        money -= 10
-        RollSlots()
-        MainUI()
-        money += Winnings()
-        
+    elif "ante down" in a:
+        cost -= 10
+    elif "leave" in a:
+        print("But you could make even more money")
+        time.sleep(3)
+        test = False
+    elif "all in" in a:
+        cost = money
+        print ("Go big or go home")
+    if money - cost < 0:
+       print("You don't have enough to do that")
+       cost -= 10
+    if money == 0:
+       print("You are too broke and get kicked out of the casino")
+       test = False
+    if not test:
+       break
+  
+  #time.sleep(0.1)
+  #os.system("clear")
+  #mainUI()
 
-    
