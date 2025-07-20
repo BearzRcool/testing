@@ -288,7 +288,7 @@ def PrintBoard(choice):
     print (slotmachine3.format(*images))
   
 def Roll():  
-  Jackpot = random.randint(1,2)
+  Jackpot = random.randint(1,25)
   global choice
   for a in range(1, 11):
   
