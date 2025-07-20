@@ -275,6 +275,7 @@ cost = 10
 
 #🍒 🍋 🍫 💎 🔔 🍀
 
+
 choice = 1
 def PrintBoard(choice):
   time.sleep(0.1)
@@ -286,9 +287,8 @@ def PrintBoard(choice):
   elif choice == 3:
     print (slotmachine3.format(*images))
   
-def Roll(
-):  #ROLL WORKS, USE SLEEP FUNCTION FROM TIME AND THEN PRINT THE ROLL OUT; ALSO DONT NEED MAINUI IF DOING IT LIKE THIS
-  Jackpot = random.randint(1,25)
+def Roll():  
+  Jackpot = random.randint(1,2)
   global choice
   for a in range(1, 11):
   
@@ -329,41 +329,48 @@ def Roll(
 money = 100
 def Winnings():
   PrintBoard(1)
-  global money, choice
+  global money, choice, earnings
   earnings = 0
   winning_stuff = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7],
                    [2, 5, 8], [0, 4, 8], [2, 4, 6]]
   for combo in winning_stuff:
     a, b, c = combo
+    symbol = images[a]
+    mult = 2
     if images[a] == images[b] == images[c]:
-      win = cost*2
+      if symbol == '💎':
+         mult = 5
+      if symbol == '🔔':
+         mult = 3
+      if symbol == '🍀':
+         mult = 2.5
+      win = cost*mult
       earnings += win
-
+  earnings = int(earnings)
   money += earnings
-  if earnings == 0:
-    PrintBoard(3)
-  elif earnings == 240:
-    for i in range(1,5):
-        time.sleep(0.1)
-        PrintBoard(choice)
-        if choice == 1:
-            choice = 2
-        else:
-            choice = 1
-    PrintBoard(1)
 
+  PrintBoard(1)
 
 test = True
-while test:
-    a = input("Gamble??? It costs $" + str(cost) + ". "  "You have $" + str(money) + ". ")
+while test: 
+    a = input("Gamble??? It costs ${:,}. "  "You have ${:,}. ".format(cost,money))
     if "yes" in a:
+        
         os.system('cls')
         Roll()
         money -= cost
         Winnings()
+        if earnings == 0:
+           print ("You lost!")
+        elif earnings == 240:
+           print ("JACKPOT!")
+        else:
+           print("You won ${:,}. ".format(earnings))
+
+        
     elif "ante up" in a:
         cost += 10
-    
+
     elif "ante down" in a:
         cost -= 10
     elif "leave" in a:
@@ -373,12 +380,16 @@ while test:
     elif "all in" in a:
         cost = money
         print ("Go big or go home")
-    if money - cost < 0:
-       print("You don't have enough to do that")
-       cost -= 10
     if money == 0:
        print("You are too broke and get kicked out of the casino")
        test = False
+    elif money - cost < 0:
+       print("You cant do that")
+       cost -= 10
+    elif cost == 0:
+       print("You cant do that")
+       cost += 10
+    
     if not test:
        break
   
