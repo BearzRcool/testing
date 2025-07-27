@@ -362,8 +362,6 @@ while test:
         Winnings()
         if earnings == 0:
            print ("You lost!")
-        elif earnings == 240:
-           print ("JACKPOT!")
         else:
            print("You won ${:,}. ".format(earnings))
 
